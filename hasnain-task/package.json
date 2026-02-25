@@ -1,0 +1,17 @@
+{
+  "name": "hasnain-task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^7.1.0",
+    "monodb": "^1.5.1"
+  }
+}
