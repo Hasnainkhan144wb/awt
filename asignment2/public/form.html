@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Contact Form</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="form-card">
+      <h1>Submit Your Details</h1>
+      <form action="/submit" method="POST" id="contact-form">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script src="./js/form.js"></script>
+  </body>
+</html>

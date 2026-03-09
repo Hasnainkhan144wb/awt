@@ -7,7 +7,13 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
-  "keywords": ["nodejs", "express", "mongodb", "rest-api", "blog"],
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "rest-api",
+    "blog"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -20,5 +26,8 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
