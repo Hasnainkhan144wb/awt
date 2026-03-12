@@ -1,0 +1,73 @@
+<%- include('../partials/header') %>
+
+<div class="row justify-content-center animate-fade-in">
+    <div class="col-md-8">
+        <div class="card shadow-md mt-4 mb-5 border-0">
+            <div class="card-body p-4">
+                <h2 class="card-title text-center mb-4">Edit Post</h2>
+
+                <% if(errors && errors.length > 0) { %>
+                    <% errors.forEach(function(error) { %>
+                        <div class="alert alert-danger"><%= error.msg %></div>
+                    <% }); %>
+                <% } %>
+
+                <form action="/posts/<%= post._id %>/update" method="POST" enctype="multipart/form-data" id="postForm">
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-bold">Title</label>
+                        <input type="text" class="form-control form-control-lg" id="title" name="title" value="<%= post.title %>" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="editor" class="form-label fw-bold">Content</label>
+                        <div id="editor" style="height: 300px;"><%- post.content %></div>
+                        <input type="hidden" name="content" id="content">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold d-block">Current Cover Image</label>
+                        <% if(post.image && post.image !== 'no-photo.jpg') { %>
+                            <img src="/uploads/<%= post.image %>" alt="Current Cover" class="img-thumbnail mb-2" style="max-height: 150px;">
+                        <% } else { %>
+                            <span class="text-muted text-sm">No specific image attached.</span><br>
+                        <% } %>
+                        <label for="image" class="form-label fw-bold mt-2">Update Cover Image (Optional)</label>
+                        <input class="form-control" type="file" id="image" name="image" accept="image/*">
+                    </div>
+
+                    <button type="submit" class="btn btn-warning btn-lg w-100">Update Post</button>
+                    <a href="/posts/<%= post._id %>" class="btn btn-secondary mt-3 w-100">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                ['link', 'image'],
+                ['clean']
+            ]
+        }
+    });
+
+    var form = document.getElementById('postForm');
+    form.onsubmit = function() {
+        var content = document.querySelector('input[name=content]');
+        content.value = quill.root.innerHTML;
+        if(content.value === '<p><br></p>') {
+            alert('Please add some content');
+            return false;
+        }
+    };
+</script>
+
+<%- include('../partials/footer') %>
