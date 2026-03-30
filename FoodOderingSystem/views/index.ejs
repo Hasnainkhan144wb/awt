@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Express | Complete System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <div id="auth-section">
+        <div class="auth-card">
+            <h2 id="auth-title">Welcome Back</h2>
+            
+            <div id="name-box" class="mb-3 d-none text-start">
+                <label class="form-label small fw-bold text-muted">Full Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Hasnain Khan">
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label small fw-bold text-muted">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="email@example.com">
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label small fw-bold text-muted">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="••••••••">
+            </div>
+
+            <div class="mb-4 text-start">
+                <label class="form-label small fw-bold text-muted">Select Role</label>
+                <select id="role" class="form-select">
+                    <option value="user">Customer</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+            <button class="btn btn-success w-100 py-2 mb-3 fw-bold" onclick="handleAuth()" id="auth-btn">Login</button>
+            
+            <p class="text-center small mb-0">
+                <span id="toggle-text">New here?</span> 
+                <span class="text-success fw-bold cursor-pointer" onclick="toggleAuth()">Register Now</span>
+            </p>
+        </div>
+    </div>
+
+    <div id="dashboard-section" class="d-none">
+        <nav class="navbar bg-white shadow-sm px-4 mb-4">
+            <span class="navbar-brand fw-bold text-success">🍔 Foodie Express</span>
+    
+            <div class="ms-auto d-flex align-items-center">
+                <span id="welcome-name" class="me-3 fw-bold text-secondary"></span>
+                <button class="btn btn-danger btn-sm" onclick="logout()">Logout</button>
+            </div>
+        </nav>
+
+        <div class="container-fluid px-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    
+                    <div id="admin-panel" class="d-none">
+                        <div class="card p-4 shadow-sm mb-4 border-0">
+                            <h5 id="form-title" class="fw-bold mb-3 text-primary">Manage Item</h5>
+                            <input type="text" id="foodName" class="form-control mb-2" placeholder="Item Name">
+                            <input type="number" id="foodPrice" class="form-control mb-2" placeholder="Price">
+                            
+                            <div class="mb-3 text-start">
+                                <label class="small fw-bold text-muted">Upload Food Image</label>
+                                <input type="file" id="foodImage" class="form-control" accept="image/*">
+                            </div>
+
+                            <button class="btn btn-primary w-100 fw-bold" id="save-food-btn" onclick="saveFood()">Save Product</button>
+                            <button class="btn btn-secondary w-100 mt-2 d-none" id="cancel-edit-btn" onclick="cancelEdit()">Cancel</button>
+                        </div>
+                    </div>
+
+                    <div id="cart-section" class="card p-4 shadow-sm border-0 mb-4 d-none">
+                        <h5 class="fw-bold text-success mb-3 border-bottom pb-2">🛒 Your Cart</h5>
+                        <div id="cart-items" class="mb-3 small">Your cart is empty.</div>
+                        <div class="d-flex justify-content-between fw-bold mb-3 pt-2 border-top">
+                            <span>Total:</span> <span id="cart-total" class="text-success">Rs. 0</span>
+                        </div>
+                        <button class="btn btn-success w-100 fw-bold d-none" id="place-order-btn" onclick="placeOrder()">Confirm Order</button>
+                    </div>
+
+                    <div id="user-status-section" class="card p-4 shadow-sm border-0 mb-4 d-none">
+                        <h5 class="fw-bold text-success mb-3 border-bottom pb-2">📜 History & Tracking</h5>
+                        <div id="user-orders-list" class="small">No orders found.</div>
+                    </div>
+
+                    <div id="admin-orders-box" class="card p-4 shadow-sm border-0 d-none">
+                        <h5 class="fw-bold mb-3">Live Orders</h5>
+                        <div id="admin-orders-list" class="small">No orders.</div>
+                    </div>
+                </div>
+
+                <div id="menu-section" class="col-lg-8">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="fw-bold m-0">Explore Menu</h4>
+                        <div class="w-50">
+                            <input type="text" id="searchInput" class="form-control shadow-sm" placeholder="🔍 Search for food..." oninput="fetchMenu()">
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3" id="food-grid">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+/* Poori file ka code replace kar dein */
+body {
+    background: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#auth-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+    padding: 20px;
+}
+
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px; /* Ye card ko tower banne se rokta hai */
+    text-align: center;
+}
+
+.auth-card h2 {
+    color: #198754;
+    font-weight: 700;
+    margin-bottom: 25px;
+    white-space: nowrap; /* Heading ko ek line mein rakhega */
+}
+
+.hidden {
+    display: none !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Dashboard spacing fix */
+.card {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
